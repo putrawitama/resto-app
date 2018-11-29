@@ -1,0 +1,41 @@
+body{
+    background-color: #ecf0f1;
+}
+hr {
+    border-top: dashed 1px rgba(0,0,0,.1) !important;
+}
+.top-scanner {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.overflow-hidden {
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.form-control-sm {
+    padding: .2rem .5rem !important;
+    font-size: 0.8rem !important;
+}
+
+.bg-tosca {
+    background-color: #1abc9c;
+}
+
+.bg-blue {
+    background-color: #3498db;
+}
+
+#report {
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.mb-30 {
+    margin-bottom:-30%;
+}
