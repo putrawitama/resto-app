@@ -30,13 +30,39 @@ class Admin extends CI_Controller {
 		if(!$this->role) {
 			redirect('transaksi', 'refresh');
 		}
+
+		for ($i = 0; $i < 12; $i++) {
+			$months[] = date("M Y", strtotime( date( 'Y-m-01' )." -$i months"));
+		}
+
+		$month = array_reverse($months);
+		$nextMonth = date("M Y", strtotime( date( 'Y-m-01' )." next months"));
+
+		for ($i=0; $i < 12; $i++) {
+			if ($i == 11) {
+				$count[] = $this->allmodels->getTransaksiMonth($month[$i], $nextMonth)->row()->bulan;
+			} else {
+				$count[] = $this->allmodels->getTransaksiMonth($month[$i], $month[$i+1])->row()->bulan;
+			}
+		}
+
+
 		
 		$data = [
 			'menu' => count($this->allmodels->getAll('menu')->result()),
 			'meja' => count($this->allmodels->getAll('meja')->result()),
 			'trans' => count($this->allmodels->getAll('transaksi')->result()),
-			'success' => $this->session->flashdata('success')
+			'success' => $this->session->flashdata('success'),
+			'bulan' => json_encode($month),
+			'jumlah' => json_encode($count),
+			'totalTransaksi' => $count[11],
+			'totalPenjualan' => $this->allmodels->getTotalTransaksi($month[11], $nextMonth)->row()->total,
+			'totalPorsi' => $this->allmodels->getTotalPorsi($month[11], $nextMonth)->row()->total
 		];
+
+		// echo '<pre>';
+		// echo $month[11];
+		// var_dump($data);
 		return view('admin.index' ,$data);
 	}
 

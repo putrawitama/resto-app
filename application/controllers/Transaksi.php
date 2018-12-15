@@ -71,6 +71,12 @@ class Transaksi extends CI_Controller {
 
 		$this->allmodels->updateData('transaksi', ['id'=>$id], $data);
 
+		$meja = [
+			'status' => 1
+		];
+
+		$this->allmodels->updateData('meja', ['id'=>$trans->meja_id], $meja);
+
 		redirect('transaksi/now', 'refresh');
 	}
 

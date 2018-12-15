@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ base_url() }}assets/css/bootstrap.min.css">
     <title>Resto App</title>
+    <script src="{{ base_url() }}assets/js/Chart.bundle.min.js"></script>
 </head>
 <body>
     @php

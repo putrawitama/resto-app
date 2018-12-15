@@ -61,6 +61,14 @@ class Welcome extends CI_Controller {
 		if (!$this->session->has_userdata('token')) {
 			redirect('/', 'refresh');
 		}
+
+		$token = $this->session->userdata('token');
+		$meja = $this->allmodels->getData('meja', ['token' => $token])->row();
+
+		if ($meja->status){
+			$this->session->sess_destroy();
+			redirect('/', 'refresh');
+		}
 		
 		$data = [
 			'makanan' => $this->allmodels->getData('menu', ['status' => 1, 'kategori' => 'MKAN'])->result(),
@@ -173,12 +181,13 @@ class Welcome extends CI_Controller {
 
 		$this->cart->destroy();
 
-		$this->session->set_flashdata('success', 'Pesanan Anda Sedang diproses. Silahkan menunggu dan lihat di cek pesanan di menu atas');
-		redirect('invoice/'.$transaksi->id, 'refresh');
+		$this->session->set_flashdata('success', 'Pesanan Anda Sedang diproses. Silahkan menunggu!! Jika ada tambahan silahkan pesan seperti sebelumnya');
+		redirect('menu', 'refresh');
 	}
 
 	public function getSelesai()
 	{
+		$this->session->sess_destroy();
 		return view('greetings');
 	}
 }

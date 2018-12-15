@@ -13,9 +13,9 @@
 
     <nav class="navbar shadow-sm sticky-top navbar-expand-lg navbar-dark bg-tosca">
         <a class="navbar-brand" href="/">Resto App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a href="selesai" class="ml-auto btn btn-sm btn-danger">
+            Selesai
+        </a>
     </nav>
 
     @if($error)

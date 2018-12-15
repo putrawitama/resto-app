@@ -10,11 +10,13 @@
     <title>Resto Bumi</title>
 </head>
 <body>
-    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-        <div class="card-body text-center">
-            <h5 class="card-title">Terima Kasih</h5>
-            <p class="card-text">Pesanan anda akan segera diantarkan. silahkan menunggu.</p>
-            <p class="card-text">Jika sudah selesai menikmati hidangan silahkan membayar dikasir.</p>
+    <div class="container text-center">
+        <div class="card text-white bg-success mb-3 mx-auto" style="max-width: 18rem;">
+            <div class="card-body text-center">
+                <h5 class="card-title">Terima Kasih</h5>
+                <p class="card-text">Telah menikmati hidangan kami</p>
+                <p class="card-text">Lain kali mampir lagi yaa !!! </p>
+            </div>
         </div>
     </div>
 </body>

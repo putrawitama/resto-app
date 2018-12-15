@@ -50,7 +50,7 @@ class AllModels extends CI_Model {
 	}
 
 	public function transaksi($status = false){
-		$this->db->select('t.id, m.no_meja, t.total_harga, t.tgl_trans, t.status_pembayaran');
+		$this->db->select('t.id, t.meja_id, m.no_meja, t.total_harga, t.tgl_trans, t.status_pembayaran');
 	   	$this->db->from('transaksi t');
 		$this->db->join('meja m', 'm.id = t.meja_id', 'left');
 
@@ -60,7 +60,32 @@ class AllModels extends CI_Model {
 
 		$this->db->order_by('tgl_trans', 'desc');
 	   	return $this->db->get();
-   	}
+	}
+	   
+	public function getTransaksiMonth($month, $nextMonth)
+	{
+		$this->db->select('COUNT(*) as bulan');
+		$this->db->from('transaksi t');
+		$this->db->where('t.tgl_trans BETWEEN '.strtotime($month).' AND '.strtotime($nextMonth));
+		return $this->db->get();
+	}
+
+	public function getTotalTransaksi($month, $nextMonth)
+	{
+		$this->db->select('sum(total_harga) as total');
+		$this->db->from('transaksi t');
+		$this->db->where('t.tgl_trans BETWEEN '.strtotime($month).' AND '.strtotime($nextMonth));
+		return $this->db->get();
+	}
+
+	public function getTotalPorsi($month, $nextMonth)
+	{
+		$this->db->select('sum(d.jumlah_pesanan) as total');
+		$this->db->from('detailtransaksi d');
+		$this->db->join('transaksi t', 't.id = d.trans_id', 'left');
+		$this->db->where('t.tgl_trans BETWEEN '.strtotime($month).' AND '.strtotime($nextMonth));
+		return $this->db->get();
+	}
 
 }
 ?>
