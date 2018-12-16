@@ -49,6 +49,7 @@
                     @if(!$trans[0]->status_pembayaran)
                         <a href="/transaksi/selesai/{{$trans[0]->transID}}" class="btn btn-success">Dibayar</a>
                     @endif
+                    <a href="/print/{{$trans[0]->transID}}" class="btn btn-primary btn-lg btn-block mt-5">Print Invoice</a>
                 </div>
             </div>
         </div>

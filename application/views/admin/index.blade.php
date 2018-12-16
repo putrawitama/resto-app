@@ -25,7 +25,7 @@
                 <div class="col-md-4 mb-2">
                     <div class="card">
                         <div class="card-body">
-                            <h4>Rp. {!!number_format($totalPenjualan, 0, "", ".")!!}</h4>
+                            <h4>Rp. {!!number_format($totalPenjualan, 2, ",", ".")!!}</h4>
                             <p class="mb-0">Penjualan Bulan Ini</p>
                         </div>
                     </div>

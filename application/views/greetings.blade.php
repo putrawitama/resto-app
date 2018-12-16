@@ -18,6 +18,8 @@
                 <p class="card-text">Lain kali mampir lagi yaa !!! </p>
             </div>
         </div>
+
+        <a href="print/{{$transID}}" class="btn btn-primary btn-lg btn-block mt-5">Invoice</a>
     </div>
 </body>
 </html>

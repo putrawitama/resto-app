@@ -187,7 +187,23 @@ class Welcome extends CI_Controller {
 
 	public function getSelesai()
 	{
+		$token = $this->session->userdata('token');
+		$meja = $this->allmodels->getData('meja', ['token' => $token])->row();
+		$transaksi = $this->allmodels->getData('transaksi', ['meja_id' => $meja->id, 'status_pembayaran' => 0])->row();
+		
+		$data = [
+			'transID' => $transaksi->id
+		];
 		$this->session->sess_destroy();
-		return view('greetings');
+		return view('greetings', $data);
+	}
+
+	public function printPDF($id)
+	{
+		$trans = $this->allmodels->fulltrans($id)->result();
+        $data = [
+            'trans' => $trans,
+		];
+		return view('print', $data);
 	}
 }

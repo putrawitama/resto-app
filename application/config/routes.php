@@ -97,3 +97,5 @@ $route['cart'] = 'welcome/load_cart';
 $route['delCart']['post'] = 'welcome/hapus_cart';
 $route['order'] = 'welcome/order';
 $route['selesai'] = 'welcome/getSelesai';
+
+$route['print/(:num)'] = 'welcome/printPDF/$1';
