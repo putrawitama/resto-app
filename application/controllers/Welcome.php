@@ -13,6 +13,7 @@ class Welcome extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		$this->load->model('allmodels');
 		$this->load->library('session');
+		
 	}
 	
 	public function index()
