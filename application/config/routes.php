@@ -75,7 +75,7 @@ $route['user/changeStatus/(:num)'] = 'auth/changeStatus/$1';
 $route['login'] = 'auth/loginForm';
 $route['postLogin']['post'] = 'auth/postLogin';
 $route['register'] = 'auth/registerForm';
-$route['postRegiter']['post'] = 'auth/postRegister';
+$route['postRegister']['post'] = 'auth/postRegister';
 $route['logout'] = 'auth/logout';
 
 $route['change-password'] = 'auth/getChangePassword';
