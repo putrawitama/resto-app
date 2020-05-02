@@ -11,9 +11,9 @@ class Welcome extends CI_Controller {
 	{
 	    parent::__construct();
 		$this->load->helper(array('form', 'url'));
-		$this->load->model('allmodels');
+		$this->load->model(['allmodels']);
 		$this->load->library('session');
-		
+
 	}
 	
 	public function index()
