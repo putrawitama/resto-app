@@ -13,7 +13,7 @@ class Admin extends CI_Controller {
 	{
 	    parent::__construct();
 		$this->load->helper(array('form', 'url'));
-		$this->load->model('allmodels');
+		$this->load->model('all_model');
 		$this->load->library('session');
 
 		if(!$this->session->userdata('logged_in')){
@@ -40,24 +40,24 @@ class Admin extends CI_Controller {
 
 		for ($i=0; $i < 12; $i++) {
 			if ($i == 11) {
-				$count[] = $this->allmodels->getTransaksiMonth($month[$i], $nextMonth)->row()->bulan;
+				$count[] = $this->all_model->getTransaksiMonth($month[$i], $nextMonth)->row()->bulan;
 			} else {
-				$count[] = $this->allmodels->getTransaksiMonth($month[$i], $month[$i+1])->row()->bulan;
+				$count[] = $this->all_model->getTransaksiMonth($month[$i], $month[$i+1])->row()->bulan;
 			}
 		}
 
 
 		
 		$data = [
-			'menu' => count($this->allmodels->getAll('menu')->result()),
-			'meja' => count($this->allmodels->getAll('meja')->result()),
-			'trans' => count($this->allmodels->getAll('transaksi')->result()),
+			'menu' => count($this->all_model->getAll('menu')->result()),
+			'meja' => count($this->all_model->getAll('meja')->result()),
+			'trans' => count($this->all_model->getAll('transaksi')->result()),
 			'success' => $this->session->flashdata('success'),
 			'bulan' => json_encode($month),
 			'jumlah' => json_encode($count),
 			'totalTransaksi' => $count[11],
-			'totalPenjualan' => $this->allmodels->getTotalTransaksi($month[11], $nextMonth)->row()->total,
-			'totalPorsi' => $this->allmodels->getTotalPorsi($month[11], $nextMonth)->row()->total
+			'totalPenjualan' => $this->all_model->getTotalTransaksi($month[11], $nextMonth)->row()->total,
+			'totalPorsi' => $this->all_model->getTotalPorsi($month[11], $nextMonth)->row()->total
 		];
 
 		// echo '<pre>';
@@ -71,7 +71,7 @@ class Admin extends CI_Controller {
 		if(!$this->role) {
 			redirect('transaksi', 'refresh');
 		}
-		$menu = $this->allmodels->getAll('menu')->result();
+		$menu = $this->all_model->getAll('menu')->result();
 		$success = $this->session->flashdata('success');
 
 		if($success != NULL) {
@@ -110,7 +110,7 @@ class Admin extends CI_Controller {
 		if(!$this->role) {
 			redirect('transaksi', 'refresh');
 		}
-		$menu = $this->allmodels->getData('menu', ['id' => $id])->row();
+		$menu = $this->all_model->getData('menu', ['id' => $id])->row();
 
 		if (empty($menu)) {
 			show_404();
@@ -137,7 +137,7 @@ class Admin extends CI_Controller {
 		if(!$this->role) {
 			redirect('transaksi', 'refresh');
 		}
-		$menu = $this->allmodels->getData('menu', ['id' => $id])->row();
+		$menu = $this->all_model->getData('menu', ['id' => $id])->row();
 
 		if (empty($menu)) {
 			show_404();
@@ -155,7 +155,7 @@ class Admin extends CI_Controller {
 		if(!$this->role) {
 			redirect('transaksi', 'refresh');
 		}
-		$meja = $this->allmodels->getData('meja', ['id' => $id])->row();
+		$meja = $this->all_model->getData('meja', ['id' => $id])->row();
 
 		if (empty($meja)) {
 			show_404();
@@ -182,12 +182,12 @@ class Admin extends CI_Controller {
 		if(!$this->role) {
 			redirect('transaksi', 'refresh');
 		}
-		$menu = $this->allmodels->getData('menu', ['id' => $id])->row();
+		$menu = $this->all_model->getData('menu', ['id' => $id])->row();
 		if (empty($menu)) {
 			show_404();
 		}
 		@unlink('.'.$menu->foto);
-		$this->allmodels->deleteData('menu', ['id' => $id]);
+		$this->all_model->deleteData('menu', ['id' => $id]);
 		$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		redirect('admin/menu', 'refresh');
 	}
@@ -197,7 +197,7 @@ class Admin extends CI_Controller {
 		if(!$this->role) {
 			redirect('transaksi', 'refresh');
 		}
-		$meja = $this->allmodels->getAll('meja')->result();
+		$meja = $this->all_model->getAll('meja')->result();
 		$success = $this->session->flashdata('success');
 
 		if($success != NULL) {
@@ -226,20 +226,20 @@ class Admin extends CI_Controller {
 		if(!$this->role) {
 			redirect('transaksi', 'refresh');
 		}
-		$meja = $this->allmodels->getData('meja', ['id' => $id])->row();
+		$meja = $this->all_model->getData('meja', ['id' => $id])->row();
 		if (empty($meja)) {
 			show_404();
 		}
 		@unlink('./assets/'.$meja->foto);
 
-		$this->allmodels->deleteData('meja', ['id' => $id]);
+		$this->all_model->deleteData('meja', ['id' => $id]);
 		$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		redirect('admin/meja', 'refresh');
 	}
 
 	public function getPrintMeja($id)
 	{
-		$meja = $this->allmodels->getData('meja', ['id' => $id])->row();
+		$meja = $this->all_model->getData('meja', ['id' => $id])->row();
 
 		if (empty($meja)) {
 			show_404();
@@ -285,7 +285,7 @@ class Admin extends CI_Controller {
 			'token' => $token,
 		];
 		
-		$this->allmodels->storeData('meja', $data);
+		$this->all_model->storeData('meja', $data);
 		
 		$this->session->set_flashdata('success', 'Data berhasil disimpan');
 		redirect('admin/meja', 'refresh');
@@ -293,7 +293,7 @@ class Admin extends CI_Controller {
 
 	public function postEditMeja($id)
 	{
-		$meja = $this->allmodels->getData('meja', ['id' => $id])->row();
+		$meja = $this->all_model->getData('meja', ['id' => $id])->row();
 		if (empty($meja)) {
 			show_404();
 		}
@@ -305,7 +305,7 @@ class Admin extends CI_Controller {
 			'kuota' => $this->input->post('jumlah')
 		];
 
-		$this->allmodels->updateData('meja', ['id' => $id], $data);
+		$this->all_model->updateData('meja', ['id' => $id], $data);
 		$this->session->set_flashdata('success', 'Data berhasil disimpan');
 		redirect('admin/meja', 'refresh');
 	}
@@ -339,7 +339,7 @@ class Admin extends CI_Controller {
 				'status' => $this->input->post('status'),
 			];
 
-			$this->allmodels->storeData('menu', $data);
+			$this->all_model->storeData('menu', $data);
 
 			$this->session->set_flashdata('success', 'Data berhasil disimpan');
 			redirect('admin/menu', 'refresh');
@@ -350,7 +350,7 @@ class Admin extends CI_Controller {
 
 	public function postEditMenu($id)
 	{
-		$menu = $this->allmodels->getData('menu', ['id' => $id])->row();
+		$menu = $this->all_model->getData('menu', ['id' => $id])->row();
 		if (empty($menu)) {
 			show_404();
 		}
@@ -386,7 +386,7 @@ class Admin extends CI_Controller {
 			}
 		}
 
-		$this->allmodels->updateData('menu', ['id' => $id], $data);
+		$this->all_model->updateData('menu', ['id' => $id], $data);
 		$this->session->set_flashdata('success', 'Data berhasil disimpan');
 		redirect('admin/menu', 'refresh');
 	}

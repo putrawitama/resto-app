@@ -11,7 +11,7 @@ class Welcome extends CI_Controller {
 	{
 	    parent::__construct();
 		$this->load->helper(array('form', 'url'));
-		$this->load->model(['allmodels']);
+		$this->load->model(['all_model']);
 		$this->load->library('session');
 
 	}
@@ -31,7 +31,7 @@ class Welcome extends CI_Controller {
 	public function checkIn()
 	{
 		$token = $this->input->post('token');
-		$meja = $this->allmodels->getData('meja', ['token' => $token])->row();
+		$meja = $this->all_model->getData('meja', ['token' => $token])->row();
 		if (empty($meja)) {
 			show_404();
 		}
@@ -45,14 +45,14 @@ class Welcome extends CI_Controller {
 			'tgl_trans' => time()
 		];
 
-		$this->allmodels->storeData('transaksi', $transaksi);
+		$this->all_model->storeData('transaksi', $transaksi);
 
 		$data = [
 			'status' => 0
 		];
 		
 		$this->session->set_userdata('token', $token);
-		$this->allmodels->updateData('meja', ['id' => $meja->id],$data);
+		$this->all_model->updateData('meja', ['id' => $meja->id],$data);
 		
 		redirect('menu', 'refresh');
 	}
@@ -64,7 +64,7 @@ class Welcome extends CI_Controller {
 		}
 
 		$token = $this->session->userdata('token');
-		$meja = $this->allmodels->getData('meja', ['token' => $token])->row();
+		$meja = $this->all_model->getData('meja', ['token' => $token])->row();
 
 		if ($meja->status){
 			$this->session->sess_destroy();
@@ -72,9 +72,9 @@ class Welcome extends CI_Controller {
 		}
 		
 		$data = [
-			'makanan' => $this->allmodels->getData('menu', ['status' => 1, 'kategori' => 'MKAN'])->result(),
-			'minuman' => $this->allmodels->getData('menu', ['status' => 1, 'kategori' => 'MNUM'])->result(),
-			'camilan' => $this->allmodels->getData('menu', ['status' => 1, 'kategori' => 'CMIL'])->result(),
+			'makanan' => $this->all_model->getData('menu', ['status' => 1, 'kategori' => 'MKAN'])->result(),
+			'minuman' => $this->all_model->getData('menu', ['status' => 1, 'kategori' => 'MNUM'])->result(),
+			'camilan' => $this->all_model->getData('menu', ['status' => 1, 'kategori' => 'CMIL'])->result(),
 			'error' => $this->session->flashdata('error'),
 			'success' => $this->session->flashdata('success')
 		];
@@ -165,8 +165,8 @@ class Welcome extends CI_Controller {
 			redirect('menu', 'refresh');
 		}
 
-		$meja = $this->allmodels->getData('meja', ['token' => $token])->row();
-		$transaksi = $this->allmodels->getData('transaksi', ['meja_id' => $meja->id, 'status_pembayaran' => 0])->row();
+		$meja = $this->all_model->getData('meja', ['token' => $token])->row();
+		$transaksi = $this->all_model->getData('transaksi', ['meja_id' => $meja->id, 'status_pembayaran' => 0])->row();
 		
 		foreach ($this->cart->contents() as $items) {
 			$data = [
@@ -175,10 +175,10 @@ class Welcome extends CI_Controller {
 				'jumlah_pesanan' => $items['qty'],
 				'total' => $items['subtotal']
 			];
-			$this->allmodels->storeData('detailtransaksi', $data);
+			$this->all_model->storeData('detailtransaksi', $data);
 		}
 
-		$this->allmodels->updateData('transaksi', ['id' => $transaksi->id], ['total_harga' => $transaksi->total_harga + $this->cart->total()]);
+		$this->all_model->updateData('transaksi', ['id' => $transaksi->id], ['total_harga' => $transaksi->total_harga + $this->cart->total()]);
 
 		$this->cart->destroy();
 
@@ -189,8 +189,8 @@ class Welcome extends CI_Controller {
 	public function getSelesai()
 	{
 		$token = $this->session->userdata('token');
-		$meja = $this->allmodels->getData('meja', ['token' => $token])->row();
-		$transaksi = $this->allmodels->getData('transaksi', ['meja_id' => $meja->id, 'status_pembayaran' => 0])->row();
+		$meja = $this->all_model->getData('meja', ['token' => $token])->row();
+		$transaksi = $this->all_model->getData('transaksi', ['meja_id' => $meja->id, 'status_pembayaran' => 0])->row();
 		
 		$data = [
 			'transID' => $transaksi->id
@@ -201,7 +201,7 @@ class Welcome extends CI_Controller {
 
 	public function printPDF($id)
 	{
-		$trans = $this->allmodels->fulltrans($id)->result();
+		$trans = $this->all_model->fulltrans($id)->result();
         $data = [
             'trans' => $trans,
 		];

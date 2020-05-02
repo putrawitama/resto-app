@@ -11,7 +11,7 @@ class Auth extends CI_Controller {
 	{
 	    parent::__construct();
 		$this->load->helper(array('form', 'url'));
-		$this->load->model('allmodels');
+		$this->load->model('all_model');
         $this->load->library('session');
     }
 
@@ -22,7 +22,7 @@ class Auth extends CI_Controller {
 		}
         $data = [
             'success' => $this->session->flashdata('success'),
-            'user' => $this->allmodels->getAll('user')->result()
+            'user' => $this->all_model->getAll('user')->result()
         ];
 
         return view('auth.user', $data);
@@ -41,7 +41,7 @@ class Auth extends CI_Controller {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $user = $this->allmodels->getData('user', ['username' => $username])->row();
+        $user = $this->all_model->getData('user', ['username' => $username])->row();
 
         if ($user == null) {
             $this->session->set_flashdata('error', 'User Tidak Terdaftar');
@@ -130,7 +130,7 @@ class Auth extends CI_Controller {
             'role' => $this->input->post('role')
         ];
 
-        $this->allmodels->storeData('user', $data);
+        $this->all_model->storeData('user', $data);
 
         $this->session->set_flashdata('success', 'User Berhasil Dibuat');
         redirect('admin/user' , 'refresh');
@@ -143,7 +143,7 @@ class Auth extends CI_Controller {
         }
         
         $data = [
-            'user' => $this->allmodels->getData('user', ['id' => $this->session->userdata('id')])->row(),
+            'user' => $this->all_model->getData('user', ['id' => $this->session->userdata('id')])->row(),
             'error' => $this->session->flashdata('error')
         ];
 
@@ -152,7 +152,7 @@ class Auth extends CI_Controller {
 
     public function postChangePassword($id)
     {
-        $user = $this->allmodels->getData('user', ['id' => $id])->row();
+        $user = $this->all_model->getData('user', ['id' => $id])->row();
         $role = $this->session->userdata('admin');
         $this->load->library('form_validation');
 
@@ -180,7 +180,7 @@ class Auth extends CI_Controller {
             'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
         ];
 
-        $this->allmodels->updateData('user', ['id' => $user->id], $data);
+        $this->all_model->updateData('user', ['id' => $user->id], $data);
 
         if(!$role) {
             $this->session->set_flashdata('success', 'Password berhasil di ubah');
@@ -199,16 +199,16 @@ class Auth extends CI_Controller {
 
     public function changeStatus($id)
     {
-        $user = $this->allmodels->getData('user', ['id' => $id])->row();
+        $user = $this->all_model->getData('user', ['id' => $id])->row();
 
         if ($user == null) {
             show_404();
         }
 
         if ($user->status) {
-            $this->allmodels->updateData('user', ['id' => $id], ['status'=>0]);
+            $this->all_model->updateData('user', ['id' => $id], ['status'=>0]);
         } else {
-            $this->allmodels->updateData('user', ['id' => $id], ['status'=>1]);
+            $this->all_model->updateData('user', ['id' => $id], ['status'=>1]);
         }
 
         redirect('admin/user', 'refresh');

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AllModels extends CI_Model {
+class All_model extends CI_Model {
 
 	//ambil semua data (select *)
 	public function getAll($table){

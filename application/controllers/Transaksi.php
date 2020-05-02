@@ -13,7 +13,7 @@ class Transaksi extends CI_Controller {
 	{
 	    parent::__construct();
 		$this->load->helper(array('form', 'url'));
-		$this->load->model('allmodels');
+		$this->load->model('all_model');
 		$this->load->library('session');
 
 		if(!$this->session->userdata('logged_in')){
@@ -27,7 +27,7 @@ class Transaksi extends CI_Controller {
 
 	public function getTransaksi()
 	{
-		$trans = $this->allmodels->transaksi()->result();
+		$trans = $this->all_model->transaksi()->result();
 
 		$data = [
 			'trans' => $trans
@@ -37,7 +37,7 @@ class Transaksi extends CI_Controller {
 	
 	public function getTransaksiNow()
 	{
-		$trans = $this->allmodels->transaksi(true)->result();
+		$trans = $this->all_model->transaksi(true)->result();
 
 		$data = [
 			'trans' => $trans
@@ -47,7 +47,7 @@ class Transaksi extends CI_Controller {
     
     public function getDetail($id)
     {
-        $trans = $this->allmodels->fulltrans($id)->result();
+        $trans = $this->all_model->fulltrans($id)->result();
 
         $data = [
             'trans' => $trans,
@@ -60,7 +60,7 @@ class Transaksi extends CI_Controller {
 
 	public function getSelesai($id)
 	{
-		$trans = $this->allmodels->getData('transaksi', ['id'=>$id])->row();
+		$trans = $this->all_model->getData('transaksi', ['id'=>$id])->row();
 		if($trans == null){
 			show_404();
 		}
@@ -69,13 +69,13 @@ class Transaksi extends CI_Controller {
 			'status_pembayaran' => 1
 		];
 
-		$this->allmodels->updateData('transaksi', ['id'=>$id], $data);
+		$this->all_model->updateData('transaksi', ['id'=>$id], $data);
 
 		$meja = [
 			'status' => 1
 		];
 
-		$this->allmodels->updateData('meja', ['id'=>$trans->meja_id], $meja);
+		$this->all_model->updateData('meja', ['id'=>$trans->meja_id], $meja);
 
 		redirect('transaksi/now', 'refresh');
 	}
@@ -89,7 +89,7 @@ class Transaksi extends CI_Controller {
 	{
 		$output = '';
 		$no = 0;
-		$menu = $this->allmodels->detailTrans()->result();
+		$menu = $this->all_model->detailTrans()->result();
         foreach ($menu as $items) {
             $no++;
             $output .='
@@ -125,7 +125,7 @@ class Transaksi extends CI_Controller {
 			'status' => 1,
 		];
 
-		$this->allmodels->updateData('detailtransaksi', [ 'id' => $item], $data);
+		$this->all_model->updateData('detailtransaksi', [ 'id' => $item], $data);
 
 		redirect('current', 'refresh');
 	}
