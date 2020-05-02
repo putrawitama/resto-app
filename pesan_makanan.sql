@@ -114,7 +114,8 @@ INSERT INTO `user` (`id`, `username`, `password`, `nama`, `role`, `status`) VALU
 --
 -- Indexes for dumped tables
 --
-
+ALTER TABLE `ci_sessions`
+  ADD PRIMARY KEY (`id`);
 --
 -- Indexes for table `detailtransaksi`
 --
