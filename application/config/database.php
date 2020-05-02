@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'resto-db',
 	'username' => 'root',
-	'password' => '',
-	'database' => 'pesan_makanan',
+	'password' => 'secret',
+	'database' => 'absensi',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

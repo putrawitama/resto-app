@@ -103,7 +103,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `nama`, `role`, `status`) VALUES
-(3, 'admin', '$2y$10$y5pmWmtjJbH7RkD4bnewfuzWQaoNog6yrb25w6x3HcwA0iE.YS1EG', 'admin', 1, 1);
+(1, 'admin', '$2y$10$MpKgx2StNDJTZAvWh.rZzuUtY.t2ZIoSa0w9fb3Uo2OilZgzzQcW2', 'admin', 1, 1);
 
 --
 -- Indexes for dumped tables

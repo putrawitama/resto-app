@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-                    <form action="postRegiter" method="post">
+                    <form action="postRegister" method="post">
                         <div class="form-group">
                             <label>Nama</label>
                             <input name="name" type="text" class="form-control" placeholder="Nama Lengkap">
