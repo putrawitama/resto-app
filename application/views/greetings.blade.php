@@ -13,9 +13,9 @@
     <div class="container text-center">
         <div class="card text-white bg-success mb-3 mx-auto" style="max-width: 18rem;">
             <div class="card-body text-center">
-                <h5 class="card-title">Terima Kasih</h5>
-                <p class="card-text">Telah menikmati hidangan kami</p>
-                <p class="card-text">Lain kali mampir lagi yaa !!! </p>
+                <h5 class="card-title">Thank You</h5>
+                <p class="card-text">for enjoying our meal</p>
+                <p class="card-text">Come again next time ! </p>
             </div>
         </div>
 

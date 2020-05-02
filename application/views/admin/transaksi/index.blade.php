@@ -5,10 +5,10 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-8">
-                    <h5 class="card-title">Manajemen Transaksi</h5>
+                    <h5 class="card-title">Management Transactions</h5>
                 </div>
                 <div class="col-md-4 text-right">
-                    <a class="btn btn-sm btn-primary" href="/transaksi/now" role="button">Transaksi Berlangsung</a>
+                    <a class="btn btn-sm btn-primary" href="/transaksi/now" role="button">Ongoing Transactions</a>
                 </div>
             </div>
             
@@ -16,7 +16,7 @@
 
             @if($trans == null)
                 <div class="alert alert-info" role="alert">
-                    Tidak ada Transaksi Ditemukan
+                    Transaction not Found
                 </div>
             @else
                 @php
@@ -26,9 +26,9 @@
                 <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th class="text-center" scope="col">No Transaksi</th>
-                            <th class="text-center" scope="col">Tanggal</th>
-                            <th class="text-center" scope="col">No Meja</th>
+                            <th class="text-center" scope="col">Number Transaction</th>
+                            <th class="text-center" scope="col">Date</th>
+                            <th class="text-center" scope="col">Table</th>
                             <th class="text-center" scope="col">Status</th>
                             <th class="text-center" scope="col">Grand Total</th>
                             <th class="text-center" scope="col">Action</th>
@@ -43,7 +43,7 @@
                                 <th class="text-center" scope="row">{{$key->id}}</th>
                                 <td class="text-center">{!!date('d M Y', $key->tgl_trans)!!}</td>
                                 <td class="text-center">{{$key->no_meja}}</td>
-                                <td class="text-center">{{$key->status_pembayaran ? 'Sudah Dibayar' : 'Sedang Berlangsung'}}</td>
+                                <td class="text-center">{{$key->status_pembayaran ? 'Already Paid' : 'Ongoing'}}</td>
                                 <td>Rp {!!number_format($key->total_harga)!!}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">

@@ -188,7 +188,7 @@ class Admin extends CI_Controller {
 		}
 		@unlink('.'.$menu->foto);
 		$this->all_model->deleteData('menu', ['id' => $id]);
-		$this->session->set_flashdata('success', 'Data berhasil dihapus');
+		$this->session->set_flashdata('success', 'Data successfully deleted');
 		redirect('admin/menu', 'refresh');
 	}
 
@@ -233,7 +233,7 @@ class Admin extends CI_Controller {
 		@unlink('./assets/'.$meja->foto);
 
 		$this->all_model->deleteData('meja', ['id' => $id]);
-		$this->session->set_flashdata('success', 'Data berhasil dihapus');
+		$this->session->set_flashdata('success', 'Data successfully deleted');
 		redirect('admin/meja', 'refresh');
 	}
 
@@ -287,7 +287,7 @@ class Admin extends CI_Controller {
 		
 		$this->all_model->storeData('meja', $data);
 		
-		$this->session->set_flashdata('success', 'Data berhasil disimpan');
+		$this->session->set_flashdata('success', 'Data saved successfully');
 		redirect('admin/meja', 'refresh');
 	}
 
@@ -306,7 +306,7 @@ class Admin extends CI_Controller {
 		];
 
 		$this->all_model->updateData('meja', ['id' => $id], $data);
-		$this->session->set_flashdata('success', 'Data berhasil disimpan');
+		$this->session->set_flashdata('success', 'Data saved successfully');
 		redirect('admin/meja', 'refresh');
 	}
 
@@ -341,7 +341,7 @@ class Admin extends CI_Controller {
 
 			$this->all_model->storeData('menu', $data);
 
-			$this->session->set_flashdata('success', 'Data berhasil disimpan');
+			$this->session->set_flashdata('success', 'Data saved successfully');
 			redirect('admin/menu', 'refresh');
             // $this->load->view('upload_success', $data);
         }
@@ -387,7 +387,7 @@ class Admin extends CI_Controller {
 		}
 
 		$this->all_model->updateData('menu', ['id' => $id], $data);
-		$this->session->set_flashdata('success', 'Data berhasil disimpan');
+		$this->session->set_flashdata('success', 'Data saved successfully');
 		redirect('admin/menu', 'refresh');
 	}
 }

@@ -5,7 +5,7 @@
         <div class="col-md-5 justify-content-center mx-auto">
             <div class="card mt-5 mx-auto">
                 <div class="card-body">
-                    <h4>Tambah User Baru</h4>
+                    <h4>Add New USer</h4>
                     <hr>
                     @if($error != null)
                         <div class="alert alert-danger" role="alert">
@@ -15,8 +15,8 @@
 
                     <form action="postRegister" method="post">
                         <div class="form-group">
-                            <label>Nama</label>
-                            <input name="name" type="text" class="form-control" placeholder="Nama Lengkap">
+                            <label>Name</label>
+                            <input name="name" type="text" class="form-control" placeholder="Full Name">
                         </div>
                         <div class="form-group">
                             <label>Username</label>

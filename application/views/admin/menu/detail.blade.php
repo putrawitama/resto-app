@@ -9,7 +9,7 @@
                     <h5 class="card-title">Detail Menu</h5>
                 </div>
                 <div class="col-md-4 text-right">
-                    <a class="btn btn-primary" href="/admin/menu" role="button">Kembali</a>
+                    <a class="btn btn-primary" href="/admin/menu" role="button">Back</a>
                 </div>
             </div>
             <hr>
@@ -23,8 +23,8 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Menu {{$menu->nama_menu}}</li>
                         <li class="list-group-item">{{$menu->deskripsi}}</li>
-                        <li class="list-group-item">Kategori {{$menu->kategori}}</li>
-                        <li class="list-group-item">Harga Rp. {{$menu->harga}}</li>
+                        <li class="list-group-item">Category {{$menu->kategori}}</li>
+                        <li class="list-group-item">Price USD {{$menu->harga}}</li>
                         <li class="list-group-item">Stock {{$menu->status ? 'Tersedia' : 'Tidak Tersedia'}}</li>
                     </ul>
                 </div>

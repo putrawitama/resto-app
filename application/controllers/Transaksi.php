@@ -105,7 +105,7 @@ class Transaksi extends CI_Controller {
 						<div class="col-md-5 text-right">
 							<form action="/change-status" method="post">
 								<input type="hidden" name="item" value="'.$items->id.'">
-								<button type="submit" class="btn btn-success">Selesai</button>
+								<button type="submit" class="btn btn-success">Done</button>
 							</form>
 						</div>
 					</div>

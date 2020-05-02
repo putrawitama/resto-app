@@ -17,7 +17,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4>{{$totalTransaksi}}</h4>
-                            <p class="mb-0">Total Transaksi Bulan Ini</p>
+                            <p class="mb-0">Total Transaction Current Month</p>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4>Rp. {!!number_format($totalPenjualan, 2, ",", ".")!!}</h4>
-                            <p class="mb-0">Penjualan Bulan Ini</p>
+                            <p class="mb-0">This month's sales</p>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4>{{$totalPorsi}}</h4>
-                            <p class="mb-0">Total Porsi Terjual Bulan Ini</p>
+                            <p class="mb-0">Total Portions Sold This Month</p>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4>Statistik Transaksi</h4>
+                            <h4>Transaction Statistics</h4>
                             <hr>
                             <canvas id="chart" class="w-100" height="300"></canvas>
                         </div>
@@ -60,9 +60,9 @@
                             Menu
                         </div>
                         <div class="card-body">
-                            <p class="card-text">Menu yang tersedia ada <span class="badge badge-danger">{{$menu}}</span>.</p>
-                            <p class="card-text">Klik tombol dibawah ini untuk melihat detailnya</p>
-                            <a href="admin/menu" class="btn btn-warning">Manajemen Menu</a>
+                            <p class="card-text">Menus available Count<span class="badge badge-danger">{{$menu}}</span>.</p>
+                            <p class="card-text">Click the button below to see the details</p>
+                            <a href="admin/menu" class="btn btn-warning">Management Menus</a>
                         </div>
                     </div>
                 </div>
@@ -73,9 +73,9 @@
                             Meja
                         </div>
                         <div class="card-body">
-                            <p class="card-text">Meja yang ada <span class="badge badge-danger">{{$meja}}</span>.</p>
-                            <p class="card-text">Klik tombol dibawah ini untuk melihat detailnya</p>
-                            <a href="admin/meja" class="btn btn-primary">Manajemen Meja</a>
+                            <p class="card-text">Tables Available Count<span class="badge badge-danger">{{$meja}}</span>.</p>
+                            <p class="card-text">Click the button below to see the details</p>
+                            <a href="admin/meja" class="btn btn-primary">Management Tables</a>
                         </div>
                     </div>
                 </div>
@@ -83,14 +83,14 @@
                 <div class="col-md-4">
                     <div class="card text-white bg-info">
                         <div class="card-header">
-                            Transaksi
+                            Transactions
                         </div>
                         <div class="card-body">
-                            <p class="card-text">Ada <span class="badge badge-warning">{{$trans}}</span> Transaksi.</p>
+                            <p class="card-text">Transaction Count <span class="badge badge-warning">{{$trans}}</span>.</p>
 
 
-                            <p class="card-text">Klik tombol dibawah ini untuk melihat detailnya</p>
-                            <a href="transaksi" class="btn btn-danger">Manajemen Transaksi</a>
+                            <p class="card-text">Click the button below to see the details</p>
+                            <a href="transaksi" class="btn btn-danger">Management Transactions</a>
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
             data: {
                 labels: JSON.parse(bulan),
                 datasets: [{
-                    label: 'Jumlah Transaksi selama Setahun',
+                    label: 'Number of Transactions for a Year',
                     data: JSON.parse(jumlah),
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',

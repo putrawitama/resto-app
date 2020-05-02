@@ -33,11 +33,12 @@ class Welcome extends CI_Controller {
 		$token = $this->input->post('token');
 		$meja = $this->all_model->getData('meja', ['token' => $token])->row();
 		if (empty($meja)) {
-			show_404();
+			$this->session->set_flashdata('error', 'Table not found');
+			redirect('/', 'refresh');
 		}
 
 		if (!$meja->status) {
-			$this->session->set_flashdata('error', 'Sorry! meja sudah dipesan');
+			$this->session->set_flashdata('error', 'Sorry! table already reserved');
 			redirect('/', 'refresh');
 		}
 		$transaksi = [
@@ -161,7 +162,7 @@ class Welcome extends CI_Controller {
 		}
 
 		if ($this->cart->total() == 0) {
-			$this->session->set_flashdata('error', 'Anda Belum Memilih Menu');
+			$this->session->set_flashdata('error', "You haven't selected the menu");
 			redirect('menu', 'refresh');
 		}
 
@@ -182,7 +183,7 @@ class Welcome extends CI_Controller {
 
 		$this->cart->destroy();
 
-		$this->session->set_flashdata('success', 'Pesanan Anda Sedang diproses. Silahkan menunggu!! Jika ada tambahan silahkan pesan seperti sebelumnya');
+		$this->session->set_flashdata('success', 'Your order is being processed. Please wait!! If there are additional, please order as before');
 		redirect('menu', 'refresh');
 	}
 

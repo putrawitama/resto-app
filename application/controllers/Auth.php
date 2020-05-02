@@ -44,17 +44,17 @@ class Auth extends CI_Controller {
         $user = $this->all_model->getData('user', ['username' => $username])->row();
 
         if ($user == null) {
-            $this->session->set_flashdata('error', 'User Tidak Terdaftar');
+            $this->session->set_flashdata('error', 'User Not Registered');
             redirect('login', 'refresh');
         }
         
         if (!(password_verify($password, $user->password))) {
-            $this->session->set_flashdata('error', 'Password Salah');
+            $this->session->set_flashdata('error', 'Password you entered is incorrect');
             redirect('login', 'refresh');
         }
 
         if (!$user->status) {
-            $this->session->set_flashdata('error', 'Akun diblokir');
+            $this->session->set_flashdata('error', 'Account has been blocked');
             redirect('login', 'refresh');
         }
 
@@ -119,7 +119,7 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules($rules);
 
         if (!$this->form_validation->run()){
-            $this->session->set_flashdata('error', 'Inputan Tidak Valid');
+            $this->session->set_flashdata('error', 'Invalid Input');
             redirect('register', 'refresh');
         }
 
@@ -132,7 +132,7 @@ class Auth extends CI_Controller {
 
         $this->all_model->storeData('user', $data);
 
-        $this->session->set_flashdata('success', 'User Berhasil Dibuat');
+        $this->session->set_flashdata('success', 'User Successfully Created');
         redirect('admin/user' , 'refresh');
     }
 
@@ -172,7 +172,7 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules($rules);
 
         if ((!$this->form_validation->run()) || ($this->input->post('passconf') != $this->input->post('password'))){
-            $this->session->set_flashdata('error', 'Inputan Tidak Valid');
+            $this->session->set_flashdata('error', 'Invalid Input');
             redirect('change-password', 'refresh');
         }
 
@@ -183,10 +183,10 @@ class Auth extends CI_Controller {
         $this->all_model->updateData('user', ['id' => $user->id], $data);
 
         if(!$role) {
-            $this->session->set_flashdata('success', 'Password berhasil di ubah');
+            $this->session->set_flashdata('success', 'password has been successfully changed');
 			redirect('waitress', 'refresh');
 		} else {
-            $this->session->set_flashdata('success', 'Password berhasil di ubah');
+            $this->session->set_flashdata('success', 'password has been successfully changed');
             redirect('admin', 'refresh');
         }
     }

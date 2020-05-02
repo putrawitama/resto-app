@@ -30,17 +30,18 @@
                             <a class="nav-link text-white" href="/admin/menu">Menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/admin/meja">Meja</a>
+                            <a class="nav-link text-white" href="/admin/meja">Table</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/admin/user">Daftar User</a>
+                            <a class="nav-link text-white" href="/admin/user">List User</a>
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/transaksi">Transaksi</a>
+                        <a class="nav-link text-white" href="/transaksi">Transactions</a>
                     </li>
                 @endif
             </ul>
+            @if($login)
             <span class="navbar-text dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Profile
@@ -51,6 +52,7 @@
                     <a class="dropdown-item text-dark" href="/logout">Logout</a>
                 </div>
             </span>
+            @endif
         </div>
     </nav>
 

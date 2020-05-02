@@ -9,35 +9,35 @@
 
             <form action="/admin/menu/update/{{$menu->id}}" method="post" enctype="multipart/form-data">
                 <div class="form-group row justify-content-center">
-                    <label class="col-sm-2 col-form-label">Nama Menu</label>
+                    <label class="col-sm-2 col-form-label">Menu</label>
                     <div class="col-sm-6">
-                        <input name="name" type="text" class="form-control" placeholder="Nama Menu" value="{{$menu->nama_menu}}" required>
+                        <input name="name" type="text" class="form-control" placeholder="Menu" value="{{$menu->nama_menu}}" required>
                     </div>
                 </div>
 
                 <div class="form-group row justify-content-center">
-                    <label class="col-sm-2 col-form-label">Deskripsi</label>
+                    <label class="col-sm-2 col-form-label">Description</label>
                     <div class="col-sm-6">
                         <textarea name="deskripsi" class="form-control">{{$menu->deskripsi}}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group row justify-content-center">
-                    <label class="col-sm-2 col-form-label">Kategori</label>
+                    <label class="col-sm-2 col-form-label">Category</label>
                     <div class="col-sm-6">
                         <select name="category" class="form-control" required>
                             <option>pilih</option>
-                            <option value="MKAN" {{$menu->kategori == 'MKAN' ? 'selected' : ''}}>Makanan</option>
-                            <option value="MNUM" {{$menu->kategori == 'MNUM' ? 'selected' : ''}}>Minuman</option>
-                            <option value="CMIL" {{$menu->kategori == 'CMIL' ? 'selected' : ''}}>Cemilan</option>
+                            <option value="MKAN" {{$menu->kategori == 'MKAN' ? 'selected' : ''}}>Foods</option>
+                            <option value="MNUM" {{$menu->kategori == 'MNUM' ? 'selected' : ''}}>Drinks</option>
+                            <option value="CMIL" {{$menu->kategori == 'CMIL' ? 'selected' : ''}}>Snacks</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group row justify-content-center">
-                    <label class="col-sm-2 col-form-label">Harga</label>
+                    <label class="col-sm-2 col-form-label">Price</label>
                     <div class="col-sm-6">
-                        <input name="price" type="number" class="form-control" placeholder="Harga Menu" value="{{$menu->harga}}" required>
+                        <input name="price" type="number" class="form-control" placeholder="Price" value="{{$menu->harga}}" required>
                     </div>
                 </div>
 
@@ -46,14 +46,14 @@
                     <div class="col-sm-6">
                         <select name="status" class="form-control" required>
                             <option>pilih</option>
-                            <option value="1" {{$menu->status == '1' ? 'selected' : ''}}>Tersedia</option>
-                            <option value="0" {{$menu->status == '0' ? 'selected' : ''}}>Tidak Tersedia</option>
+                            <option value="1" {{$menu->status == '1' ? 'selected' : ''}}>Available</option>
+                            <option value="0" {{$menu->status == '0' ? 'selected' : ''}}>Not Available</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group row justify-content-center">
-                    <label class="col-sm-2 col-form-label">Ubah Foto Menu</label>
+                    <label class="col-sm-2 col-form-label">Change Photo Menu</label>
                     <div class="col-sm-6">
                         <img src="{{$menu->foto}}" alt="Foto Menu" class="img-thumbnail mb-3" width="200">
                         <input name="photo" type="file" class="form-control-file">
@@ -62,7 +62,7 @@
 
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-8 text-right">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>
             </form>

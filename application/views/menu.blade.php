@@ -14,7 +14,7 @@
     <nav class="navbar shadow-sm sticky-top navbar-expand-lg navbar-dark bg-tosca">
         <a class="navbar-brand" href="/">Resto App</a>
         <a href="selesai" class="ml-auto btn btn-sm btn-danger">
-            Selesai
+            Done
         </a>
     </nav>
 
@@ -30,12 +30,12 @@
     @endif
     <div class="bg-white w-100 py-3 mt-3">
         <div class="container">
-            <h5>Makanan</h5>
+            <h5>Foods</h5>
             <hr>
 
             @if($makanan == null)
                 <div class="alert alert-info" role="alert">
-                    Tidak Tersedia
+                    Not Available
                 </div>
             @else
                 @foreach($makanan as $key)
@@ -66,12 +66,12 @@
 
     <div class="bg-white w-100 py-3 mt-2">
         <div class="container">
-            <h5>Minuman</h5>
+            <h5>Drinks</h5>
             <hr>
 
             @if($minuman == null)
                 <div class="alert alert-info" role="alert">
-                    Tidak Tersedia
+                    Not Available
                 </div>
             @else
                 @foreach($minuman as $key)
@@ -102,12 +102,12 @@
 
     <div class="bg-white w-100 py-3 mt-2 mb-2">
         <div class="container">
-            <h5>Camilan</h5>
+            <h5>Snacks</h5>
             <hr>
 
             @if($camilan == null)
                 <div class="alert alert-info" role="alert">
-                    Tidak Tersedia
+                    Not Available
                 </div>
             @else
                 @foreach($camilan as $key)

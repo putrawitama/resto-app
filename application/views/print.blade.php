@@ -13,37 +13,37 @@
         <hr>
 
         <dl class="row">
-            <dt class="col-sm-3">No Transaksi</dt>
+            <dt class="col-sm-3">Transaction ID</dt>
             <dd class="col-sm-9">{{$trans[0]->transID}}</dd>
 
-            <dt class="col-sm-3">Tgl Transaksi</dt>
+            <dt class="col-sm-3">Date</dt>
             <dd class="col-sm-9">{!!date('d M Y', $trans[0]->tgl_trans)!!}</dd>
 
-            <dt class="col-sm-3">No Meja</dt>
+            <dt class="col-sm-3">Table</dt>
             <dd class="col-sm-9">{{$trans[0]->no_meja}}</dd>
 
             <dt class="col-sm-3">Status</dt>
             <dd class="col-sm-9 mb-4">{{$trans[0]->status_pembayaran ? 'Sudah Dibayar' : 'Sedang Berlangsung'}}</dd>
             
             <dt class="col-sm-4 mb-1">Menu</dt>
-            <dt class="col-sm-3 mb-1">Harga</dt>
-            <dt class="col-sm-2 mb-1 text-center">Jumlah</dt>
+            <dt class="col-sm-3 mb-1">Price</dt>
+            <dt class="col-sm-2 mb-1 text-center">Quantity</dt>
             <dt class="col-sm-3 mb-1 text-right">Sub Total</dt>
 
             @foreach($trans as $key)
                 <dd class="col-sm-4">{{$key->nama_menu}}</dd>
-                <dd class="col-sm-3">Rp {!!number_format($key->harga)!!}</dd>
+                <dd class="col-sm-3">USD {!!number_format($key->harga)!!}</dd>
                 <dd class="col-sm-2 text-center">{{$key->jumlah_pesanan}}</dd>
-                <dd class="col-sm-3 text-right">Rp {!!number_format($key->total)!!}</dd>
+                <dd class="col-sm-3 text-right">USD {!!number_format($key->total)!!}</dd>
             @endforeach
 
 
             <dt class="col-sm-9 text-right">Grand Total</dt>
-            <dt class="col-sm-3 text-right">Rp {!!number_format($trans[0]->total_harga)!!}</dt>
+            <dt class="col-sm-3 text-right">USD {!!number_format($trans[0]->total_harga)!!}</dt>
             
         </dl>
 
-        <p class="lead">Informasi ini hasil cetakan computer dan tidak memerlukan tanda tangan</p>
+        <p class="lead">This information is a computer printout and does not require a signature</p>
     </div>
 </body>
 </html>

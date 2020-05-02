@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mt-3">
-        <h2>Pesanan</h2>
+        <h2>Orders</h2>
         <hr class="mb-5">
 
         <div id="proses">

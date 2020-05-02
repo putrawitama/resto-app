@@ -6,7 +6,7 @@
             <div class="card mt-5 mx-auto">
                 <div class="card-body">
 
-                    <h4>Ganti Password</h4>
+                    <h4>Change Password</h4>
                     <hr>
                     @if($error != null)
                         <div class="alert alert-danger" role="alert">
@@ -16,14 +16,14 @@
 
                     <form action="postChange/{{$user->id}}" method="post">
                         <div class="form-group">
-                            <label>Password Baru</label>
+                            <label>New Password</label>
                             <input name="password" type="password" class="form-control" placeholder="Enter username">
                         </div>
                         <div class="form-group">
-                            <label>Konfirmasi Password</label>
+                            <label>Confirmation Password</label>
                             <input name="passconf" type="password" class="form-control" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div>
